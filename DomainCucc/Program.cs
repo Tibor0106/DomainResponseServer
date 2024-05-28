@@ -13,10 +13,10 @@ class Program
         listener.Start();
         Console.WriteLine("Web Server Running...");
 
-        // Kliensek fogadása
+  
         while (true)
         {
-            HttpListenerContext context = listener.GetContext(); // Várakozás új kérésre
+            HttpListenerContext context = listener.GetContext(); 
             ThreadPool.QueueUserWorkItem((_) =>
             {
                 HttpListenerRequest request = context.Request;
