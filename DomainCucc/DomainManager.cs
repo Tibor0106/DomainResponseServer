@@ -50,5 +50,17 @@ namespace DomainCucc
         {
             TRANSFER = 0, FOLDER = 1
         }
+        public Dictionary<string, string> DecodeBody(string body)
+        {
+            Dictionary<string, string> b = new Dictionary<string, string>();
+
+            string[] strings = body.Split('&');
+            foreach (string s in strings)
+            {
+                b.Add(s.Split('=')[0], s.Split('=')[1]);
+            }
+            return b;
+        }
     }
+
 }

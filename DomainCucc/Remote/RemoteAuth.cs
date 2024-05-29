@@ -20,21 +20,22 @@ namespace DomainCucc.Remote
         }
         public bool Login(string username, string password)
         {
-            foreach(var i in  this.loginValues)
+            bool success = false;
+            if (loginValues.TryGetValue(username, out string storedPassword))
             {
-              if(i.Key == username) { 
-                if(i.Value == password)
+                if (storedPassword == password)
                 {
-                   return true;
+                    success = true;         
                 }
-              }
             }
-            return false;
+            return success;
         }
         public bool Register(string username, string password)
         {
             File.AppendAllLinesAsync(filePath, new List<string>() { username+";"+password }); 
-            return true;       
+            return true;
+        
         }
+       
     }
 }
